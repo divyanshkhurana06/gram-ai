@@ -16,7 +16,7 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 # Configuration
 DATASET_PATH = r"C:\Users\pdasv\Downloads\updated_data.csv"
-ELEVEN_API_KEY = "sk_78dc8d7467f4f673cbad567018891b70f2b03acedd64517d"  # Replace with your key
+ELEVEN_API_KEY = ""  # Replace with your key
 HF_MODEL = "google/flan-t5-base"
 
 # Load dataset
@@ -311,3 +311,4 @@ if __name__ == '__main__':
     print("="*60)
     
     app.run(host='0.0.0.0', port=5000, debug=True)
+
