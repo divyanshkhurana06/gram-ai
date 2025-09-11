@@ -7,6 +7,7 @@ from .config import settings
 from .data_loader import load_dataset
 from .search import search_dataset
 from .generator import generate_answer
+from .translate import Translator
 
 
 def build_response_row(row: pd.Series, summary: str) -> Dict[str, Any]:
@@ -40,3 +41,18 @@ def run_query(query: str, dataset_path: str | None = None) -> Dict[str, Any]:
 	}
 	summary = generate_answer(query, dataset_info)
 	return build_response_row(best, summary)
+
+
+def run_query_multilingual(user_text: str, src_lang: str | None, tgt_lang: str | None, dataset_path: str | None = None) -> Dict[str, Any]:
+	"""Translate user_text to English for LLM, then back to target language."""
+	translator = Translator()
+	english_query = user_text
+	if src_lang and src_lang.lower() != "en":
+		translated = translator.translate(user_text, src_lang=src_lang, tgt_lang="en")
+		english_query = translated or user_text
+	result_en = run_query(english_query, dataset_path=dataset_path)
+	if tgt_lang and tgt_lang.lower() != "en":
+		back = translator.translate(result_en.get("summary", ""), src_lang="en", tgt_lang=tgt_lang)
+		if back:
+			result_en["summary"] = back
+	return result_en
