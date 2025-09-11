@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* GramAI Design System - Clean, readable, and user-friendly
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Light theme base for better readability */
+    --background: 0 0% 98%;
+    --foreground: 222 84% 8%;
+
+    /* Government blue (trustworthy and professional) */
+    --primary: 220 91% 45%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 220 91% 55%;
+    
+    /* Warm orange (friendly and approachable) */
+    --secondary: 25 95% 53%;
+    --secondary-foreground: 0 0% 98%;
+    --secondary-glow: 25 95% 63%;
+    
+    /* Success green (positive outcomes) */
+    --accent: 142 76% 36%;
+    --accent-foreground: 0 0% 98%;
+    --accent-glow: 142 76% 46%;
+
+    /* Clean cards */
+    --card: 0 0% 100%;
+    --card-foreground: 222 84% 8%;
+    --glass: 0 0% 100%;
+    --glass-border: 214 32% 91%;
+    
+    /* Clean popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 84% 8%;
+
+    /* Subtle muted variants */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Clean borders and inputs */
+    --border: 214 32% 91%;
+    --input: 0 0% 100%;
+    --ring: 220 91% 45%;
+
+    /* Soft gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(220 91% 45%), hsl(220 91% 55%));
+    --gradient-secondary: linear-gradient(135deg, hsl(25 95% 53%), hsl(25 95% 63%));
+    --gradient-accent: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 46%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 91% 45%) 0%, hsl(142 76% 36%) 50%, hsl(25 95% 53%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.9), hsl(0 0% 100% / 0.7));
+    
+    /* Soft shadows */
+    --shadow-primary: 0 4px 12px hsl(220 91% 45% / 0.15);
+    --shadow-secondary: 0 4px 12px hsl(25 95% 53% / 0.15);
+    --shadow-accent: 0 4px 12px hsl(142 76% 36% / 0.15);
+    --shadow-glass: 0 2px 8px hsl(0 0% 0% / 0.1);
+    
+    /* Animation variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    background: linear-gradient(135deg, hsl(0 0% 98%) 0%, hsl(210 40% 98%) 100%);
+    min-height: 100vh;
+  }
+  
+  /* Glassmorphism utilities */
+  .glass {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--glass-border));
+  }
+  
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: var(--shadow-primary);
+  }
+  
+  .glow-secondary {
+    box-shadow: var(--shadow-secondary);
+  }
+  
+  .glow-accent {
+    box-shadow: var(--shadow-accent);
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
